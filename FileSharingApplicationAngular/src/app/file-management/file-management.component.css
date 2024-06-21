@@ -1,0 +1,33 @@
+.card {
+    height: calc(100vh - 100px); 
+    overflow-y: auto;
+    border: none; 
+  }
+  
+  .card-header {
+    border-bottom: none; 
+  }
+  
+  .card-body {
+    padding: 1rem; 
+  }
+  
+  .btn-outline-secondary {
+    color: #6c757d; 
+    border-color: #6c757d; 
+  }
+  
+  .btn-outline-secondary:hover {
+    background-color: #6c757d; 
+    color: #fff; 
+  }
+  
+  .list-group-item {
+    border-color: #ced4da; 
+  }
+  
+  .list-group-item:hover {
+    background-color: #f8f9fa; 
+  }
+  
+  

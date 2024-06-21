@@ -1,0 +1,48 @@
+<div class="container mt-4" >
+  <div *ngIf="files && files.length > 0" class="row g-3 mb-3">
+    <ng-container *ngFor="let file of files">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <a (click)="viewFileContent(file)" style="cursor: pointer;">
+            <div class="img-container p-3">
+              <i class="bi" [ngClass]="{
+                'bi-file-earmark-image-fill': isImageFile(file.filename),
+                'bi-file-earmark-text-fill': isTextFile(file.filename),
+                'bi-file-earmark-play-fill': isVideoFile(file.filename)
+              }" style="font-size: 3rem;"></i>
+            </div>
+          </a>
+          <div class="card-body p-3">
+            <h5 class="card-title text-center">{{ file.filename }}</h5>
+            <p class="card-text text-center">Uploaded At: {{ file.uploadedAt | date:'medium' }}</p>
+            <p class="card-text text-center">File Size: {{ file.fileSize }} bytes</p>
+            <p *ngIf="file.retentionDate" class="card-text text-center">Retention Date: {{ file.retentionDate | date:'medium' }}</p>
+            <p *ngIf="!file.retentionDate" class="card-text text-center">Permanently uploaded</p>
+            <div class="d-flex flex-column align-items-center mt-3">
+              <button class="btn btn-primary me-2 mb-2" (click)="toggleShareDropdown(file)">
+                <i class="bi bi-share-fill"></i> Share
+              </button>
+              <div class="dropdown" *ngIf="file.showShareDropdown">
+                <select class="form-select mb-2" [(ngModel)]="file.selectedUser">
+                  <option *ngFor="let user of users" [ngValue]="user">{{ user.email }}</option>
+                </select>
+                <button class="btn btn-success me-2 mb-2" (click)="shareFile(file)">Confirm Share</button>
+              </div>
+              <button *ngIf="file.retentionDate" class="btn btn-warning me-2 mb-2" (click)="toggleExtendDropdown(file)">
+                <i class="bi bi-calendar-plus"></i> Extend Retention
+              </button>
+              <div class="dropdown" *ngIf="file.showExtendDropdown">
+                <input type="date" class="form-control mb-2" [(ngModel)]="retentiondate.retentionDate" [min]="getMinDate(file)">
+                <button class="btn btn-success me-2 mb-2" (click)="extendRetention(file)">Extend</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div *ngIf="files.length === 0" class="mt-3">
+    <h6 class="alert alert-info text-center">No files uploaded yet.</h6>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container mt-4" >
+  <div *ngIf="sharedFiles && sharedFiles.length > 0" class="row g-3 mb-3">
+    <ng-container *ngFor="let file of sharedFiles">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <a (click)="viewFileContent(file)" style="cursor: pointer;">
+            <div class="img-container p-3">
+              <i class="bi" [ngClass]="{
+                'bi-file-image-fill': isImageFile(file.filename),
+                'bi-file-earmark-text-fill': isTextFile(file.filename),
+                'bi-play-circle-fill': isVideoFile(file.filename)
+              }" style="font-size: 3rem;"></i>
+            </div>
+          </a>
+          <div class="card-body p-3">
+            <h5 class="card-title text-center">{{ file.filename }}</h5>
+            <p class="card-text text-center">Shared By: {{ file.sharedByUser }}</p>
+            <p class="card-text text-center">Shared At: {{ file.sharedAt | date:'medium' }}</p>
+            <p class="card-text text-center">File Size: {{ file.fileSize }} bytes</p>
+
+            <div class="d-flex flex-column mt-3" *ngIf="isTextFile(file.filename)">
+              <select class="form-select mb-2 w-100" [(ngModel)]="file.selectedLanguage">
+                <option *ngFor="let lang of languages" [value]="lang.value">{{ lang.viewValue }}</option>
+              </select>
+              <button class="btn btn-sm btn-secondary" (click)="translateFile(file)">Translate</button>
+              <div *ngIf="file.translatedContent" class="mt-3">
+                <h6 class="card-subtitle mb-2 text-muted">Translated Content:</h6>
+                <p class="card-text">{{ file.translatedContent }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div *ngIf="!(sharedFiles && sharedFiles.length > 0)" class="mt-3">
+    <h6 class="alert alert-info text-center">No files shared with this user.</h6>
+  </div>
+</div>

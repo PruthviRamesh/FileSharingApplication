@@ -1,0 +1,21 @@
+<div class="container-fluid bg-image vh-100 d-flex justify-content-center align-items-center">
+  <div class="w-50">
+    <form class="login-form p-4 p-md-5 rounded shadow" (ngSubmit)="onSubmit()">
+      <h2 class="mb-4 text-center">Admin Login</h2>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email" [(ngModel)]="loginDetails.email" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter your password" [(ngModel)]="loginDetails.password" name="password" required>
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger d-flex align-items-center mb-3" role="alert">
+        <i class="bi bi-x-circle-fill me-2"></i>
+        {{ errorMessage }}
+      </div>
+      
+      <button type="submit" class="btn btn-primary w-100" [disabled]="!loginDetails.email || !loginDetails.password">Sign In</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="container mt-5" >
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-5">
+          <h5 class="card-title text-center mb-4">Upload Form</h5>
+          <p class="card-text text-center mb-4">Use this form to upload your files.</p>
+          <form (ngSubmit)="onSubmit()">
+            <div class="mb-4">
+              <label for="fileUpload" class="form-label">Choose file:</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-upload"></i>
+                </span>
+                <input type="file" class="form-control" id="fileUpload" name="fileUpload" (change)="onFileSelected($event)">
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="permanentStorage" class="form-label">Permanent Storage:</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-archive"></i>
+                </span>
+                <select class="form-select" [(ngModel)]="isPermanent" id="permanentStorage" name="permanentStorage" required>
+                  <option [ngValue]="null" disabled>Select an option</option>
+                  <option [ngValue]="false">No</option>
+                  <option [ngValue]="true">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-4" *ngIf="isPermanent === false">
+              <label for="retentionDate" class="form-label">Retention Date:</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-calendar-date"></i>
+                </span>
+                <input type="date" class="form-control" id="retentionDate" name="retentionDate"
+                       [(ngModel)]="retentionDate" [min]="today | date:'yyyy-MM-dd'" [required]="!isRetentionDateDisabled">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="!fileToUpload || isPermanent === null">
+              <i class="bi bi-cloud-upload-fill me-2"></i>Upload File
+            </button>
+          </form>
+          <div *ngIf="showProgress" class="mt-4">
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar" [style.width.%]="uploadProgress"
+                   [attr.aria-valuenow]="uploadProgress" aria-valuemin="0" aria-valuemax="100">
+                {{ uploadProgress }}%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

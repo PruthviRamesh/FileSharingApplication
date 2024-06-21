@@ -1,0 +1,66 @@
+<div class="container-fluid bg-image vh-100 d-flex flex-column p-0">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand fs-2">File Sharing App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item d-flex align-items-center">
+            <i class="bi bi-person-circle text-light fs-3 me-2"></i>
+            <span class="navbar-text text-light me-4" style="font-size: 1.5rem;">
+              Welcome, {{ currentUser }}
+            </span>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-light" (click)="signOut()">Sign Out</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="d-flex flex-grow-1">
+    <div class="bg-dark " id="sidebar" style="margin-top: 70px;">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link d-flex align-items-center" [class.active]="activeTab === 'upload-files'" (click)="setActiveTab('upload-files')">
+          <i class="bi bi-cloud-upload-fill fs-4 me-2"></i>Upload Files
+        </a>
+        <a class="nav-link d-flex align-items-center" [class.active]="activeTab === 'shared-files'" (click)="setActiveTab('shared-files')">
+          <i class="bi bi-folder-symlink-fill fs-4 me-2"></i>Shared For You
+        </a>
+        <a class="nav-link d-flex align-items-center" [class.active]="activeTab === 'uploaded-files'" (click)="setActiveTab('uploaded-files')">
+          <i class="bi bi-file-earmark-fill fs-4 me-2"></i>Uploaded Files
+        </a>
+        <a class="nav-link d-flex align-items-center" [class.active]="activeTab === 'recycle-bin'" (click)="setActiveTab('recycle-bin')">
+          <i class="bi bi-trash-fill fs-4 me-2"></i>Recycle Bin
+        </a>
+      </div>
+    </div>
+    <div class="container-fluid py-5 px-4 flex-grow-1">
+      <div [ngSwitch]="activeTab">
+        <div *ngSwitchCase="'upload-files'">
+          <h2 style="text-align: center; margin-top: 70px;">Upload Files</h2>
+          <app-upload-file></app-upload-file>
+        </div>
+        <div *ngSwitchCase="'shared-files'">
+          <h2 style="text-align: center; margin-top: 70px;">Shared Files For You</h2>
+          <app-shared-files></app-shared-files>
+        </div>
+        <div *ngSwitchCase="'uploaded-files'">
+          <h2 style="text-align: center; margin-top: 70px;">Uploaded Files</h2>
+          <app-uploaded-files></app-uploaded-files>
+        </div>
+        <div *ngSwitchCase="'recycle-bin'">
+          <h2 style="text-align: center; margin-top: 70px;">Recycle Bin</h2>
+          <app-recyclebin></app-recyclebin>
+        </div>
+        <div *ngSwitchDefault>
+          <h2 style="text-align: center; margin-top: 70px;">Welcome</h2>
+          <p style="text-align: center;">Select an option from the menu.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

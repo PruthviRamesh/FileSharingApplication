@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <div class="card bg-light">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title">Categorize</h5>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-outline-secondary mb-2 w-100" (click)="setActiveTab('username')">
+                        <i class="bi bi-person-fill fs-5 me-2"></i> By Username
+                    </button>
+                    <button class="btn btn-outline-secondary mb-2 w-100" (click)="setActiveTab('department')">
+                        <i class="bi bi-people-fill fs-5 me-2"></i> By Department
+                    </button>
+                    <button class="btn btn-outline-secondary mb-2 w-100" (click)="setActiveTab('date')">
+                        <i class="bi bi-calendar-fill fs-5 me-2"></i> By Date
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div *ngIf="activeTab === 'username'" class="card bg-light mb-3">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title">Select Username</h5>
+                </div>
+                <div class="card-body">
+                    <select class="form-select" [(ngModel)]="tempSelectedUsername">
+                        <option value="">Select Username</option>
+                        <option *ngFor="let user of Users" [value]="user.username">{{ user.username }}</option>
+                    </select>
+                    <button class="btn btn-primary mt-2" (click)="loadFilesByUser()">Submit</button>
+                    <div *ngIf="selectedUserFiles.length > 0">
+                        <h3 class="mb-4 mt-4">Files Uploaded by {{ selectedUsername }}</h3>
+                        <div class="list-group">
+                            <button *ngFor="let file of selectedUserFiles" type="button" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <a [href]="file.filePath" target="_blank" style="font-size: 16px;"><p class="mb-1">{{ file.filename }}</p></a>
+                                    <small>{{ file.uploadedAt | date:'medium' }}</small>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="selectedUserFiles.length === 0 && submitted" class="text-center mt-3">
+                        <h5>No files found.</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="activeTab === 'department'" class="card bg-light mb-3">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title">Select Department</h5>
+                </div>
+                <div class="card-body">
+                    <select class="form-select" [(ngModel)]="tempSelectedDepartment">
+                        <option value="">Select Department</option>
+                        <option *ngFor="let department of distinctDepartments" [value]="department">{{ department }}</option>
+                    </select>
+                    <button class="btn btn-primary mt-2" (click)="loadFilesByDepartment()">Submit</button>
+                    <div *ngIf="selectedUserFiles.length > 0">
+                        <h3 class="mb-4 mt-4">Files Uploaded by {{ selectedDepartment }} department</h3>
+                        <div class="list-group">
+                            <button *ngFor="let file of selectedUserFiles" type="button" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <a [href]="file.filePath" target="_blank" style="font-size: 16px;"><p class="mb-1">{{ file.filename }}</p></a>
+                                    <small>{{ file.uploadedAt | date:'medium' }}</small>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="selectedUserFiles.length === 0 && submitted" class="text-center mt-3">
+                        <h5>No files found.</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="activeTab === 'date'" class="card bg-light mb-3">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title">Select Date</h5>
+                </div>
+                <div class="card-body">
+                    <input type="date" class="form-control" [(ngModel)]="tempSelectedDate">
+                    <button class="btn btn-primary mt-2" (click)="loadFilesByDate()">Submit</button>
+                    <div *ngIf="selectedUserFiles.length > 0">
+                        <h3 class="mb-4 mt-4">Files Uploaded on {{ selectedDate | date:'mediumDate' }}</h3>
+                        <div class="list-group">
+                            <button *ngFor="let file of selectedUserFiles" type="button" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <a [href]="file.filePath" target="_blank" style="font-size: 16px;"><p class="mb-1">{{ file.filename }}</p></a>
+                                    <small>{{ file.uploadedAt | date:'medium' }}</small>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="selectedUserFiles.length === 0 && submitted" class="text-center mt-3">
+                        <h5>No files found.</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

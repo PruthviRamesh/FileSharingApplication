@@ -1,0 +1,254 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg-image {
+    background: url('../../assets/home.avif') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    height: 100%;
+}
+
+.blur-bg {
+    background: rgba(255, 255, 255, 0.5); /* White background with transparency */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    padding: 20px;
+    color: black; /* Text color set to black */
+}
+
+.navbar {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.navbar-brand .fas {
+    margin-right: 10px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #007bff;
+}
+
+.card {
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 123, 255, 0.3);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.display-4 {
+    font-weight: 500; /* Reduced font weight */
+    color: black; /* Text color set to black */
+}
+
+.lead {
+    color: black; /* Text color set to black */
+    font-size: 26px;
+}
+
+.btn {
+    color: white !important; /* Button text color set to black */
+}
+
+@media (max-width: 768px) {
+    .navbar-nav .nav-item {
+        margin: 0.5rem 0;
+    }
+}
+
+/* Additional styling for the About Us and Key Features sections */
+#about {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 50px 0; /* Increased padding for better spacing */
+}
+
+#about .row {
+    margin-left: 0; /* Remove default left margin */
+    margin-right: 0; /* Remove default right margin */
+}
+
+#about .col-md-6 {
+    margin-bottom: 30px; /* Increased bottom margin for better spacing */
+}
+
+#about .card {
+    background-color: #ffffff; /* White background for cards */
+    border-radius: 10px; /* Rounded corners for cards */
+    border: 1px solid #e5e5e5; /* Light border for cards */
+    padding: 30px; /* Increased padding inside cards */
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; /* Smooth transitions */
+}
+
+#about .card:hover {
+    transform: translateY(-10px); /* Lift card on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
+    border-color: rgba(0, 123, 255, 0.3); /* Highlight border on hover */
+}
+
+#about h3 {
+    font-size: 24px; /* Larger font size for card headings */
+    font-weight: 600; /* Increased font weight for card headings */
+    margin-bottom: 20px; /* Increased bottom margin for card headings */
+}
+
+#about p {
+    font-size: 18px; /* Adjusted font size for paragraphs */
+    line-height: 1.6; /* Increased line height for better readability */
+}
+
+#about ul {
+    list-style-type: none; /* Removed default list style */
+    padding-left: 0; /* Removed default padding */
+}
+
+#about ul li {
+    font-size: 16px; /* Adjusted font size for list items */
+    line-height: 1.6; /* Increased line height for better readability */
+    margin-bottom: 10px; /* Increased bottom margin for list items */
+}
+
+#features {
+    background-color: #ffffff; /* White background */
+    padding: 50px 0; /* Increased padding for better spacing */
+}
+
+#features .card {
+    background-color: #ffffff; /* White background for cards */
+    border-radius: 10px; /* Rounded corners for cards */
+    border: 1px solid #e5e5e5; /* Light border for cards */
+    padding: 30px; /* Increased padding inside cards */
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; /* Smooth transitions */
+}
+
+#features .card:hover {
+    transform: translateY(-10px); /* Lift card on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
+    border-color: rgba(0, 123, 255, 0.3); /* Highlight border on hover */
+}
+
+#features .card-title {
+    font-size: 1.5rem; /* Larger font size for card titles */
+    margin-bottom: 1rem; /* Increased bottom margin for card titles */
+}
+
+#features .card-text {
+    font-size: 18px; /* Adjusted font size for card text */
+    line-height: 1.6; /* Increased line height for better readability */
+}
+
+@media (max-width: 768px) {
+    .navbar-nav .nav-item {
+        margin: 0.5rem 0;
+    }
+}
+/* Existing styles for #features remain the same */
+
+#features .card-body {
+    padding: 2rem; /* Increased padding for card body */
+}
+
+#features .card-title {
+    font-size: 1.5rem; /* Larger font size for card titles */
+    margin-bottom: 1rem; /* Increased bottom margin for card titles */
+}
+
+#features .card-text {
+    font-size: 18px; /* Adjusted font size for card text */
+    line-height: 1.6; /* Increased line height for better readability */
+}
+
+#features .fa-3x {
+    color: #007bff; /* Blue color for icons */
+}
+
+@media (max-width: 768px) {
+    /* Existing media queries for responsiveness */
+}
+.card {
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 123, 255, 0.3);
+}
+
+.card-body {
+    padding: 2rem;
+    height: 100%; /* Ensures all cards have the same height */
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.fa-3x {
+    color: #007bff; /* Blue color for icons */
+}
+
+.dropdown-menu {
+    background-color: #f8f9fa; /* Background color for dropdown menu */
+}
+
+@media (max-width: 768px) {
+    .navbar-nav .nav-item {
+        margin: 0.5rem 0;
+    }
+}

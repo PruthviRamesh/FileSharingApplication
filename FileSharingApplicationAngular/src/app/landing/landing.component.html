@@ -1,0 +1,139 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm">
+    <div class="container px-0">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-share-alt"></i> <span class="app-name">File Sharing App</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Sign In / Sign Up
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" routerLink="/signin">Sign In</a>
+                        <a class="dropdown-item" routerLink="/signup">Sign Up</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="home" class="container-fluid bg-image vh-100 d-flex justify-content-center align-items-center">
+    <div class="text-center text-white p-5 rounded shadow blur-bg animate__animated animate__fadeIn">
+        <h1 class="display-4 mb-4">Welcome to File Sharing App</h1>
+        <p class="lead mb-4">Upload, Share, and Translate your files with ease.</p>
+        <a routerLink="/signup" class="btn btn-primary btn-lg">Get Started</a>
+    </div>
+</div>
+<div id="about" class="container-fluid py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">About Us</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm p-4 h-100">
+                    <h3 class="mb-3">Our Mission</h3>
+                    <p>We aim to simplify file sharing and collaboration across different teams and departments. Our platform provides secure, efficient, and user-friendly solutions for all your file management needs.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm p-4 h-100">
+                    <h3 class="mb-3">Why Choose Us?</h3>
+                    <ul class="list-unstyled">
+                        <li>Secure file upload and sharing</li>
+                        <li>Advanced file management features</li>
+                        <li>Integrated file translation capabilities</li>
+                        <li>Customizable user permissions</li>
+                        <li>Real-time analytics and reporting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="features" class="container-fluid bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Key Features</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm text-center animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="card-body">
+                        <i class="fas fa-file-upload fa-3x mb-3"></i>
+                        <h5 class="card-title">Upload Files</h5>
+                        <p class="card-text">Easily upload files of any type to our secure servers. Our intuitive interface ensures a smooth and quick upload process.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm text-center animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="card-body">
+                        <i class="fas fa-share-alt fa-3x mb-3"></i>
+                        <h5 class="card-title">Share Files</h5>
+                        <p class="card-text">Share files securely with customizable access controls. You can set permissions and track access for better collaboration.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm text-center animate__animated animate__fadeInUp animate__delay-3s">
+                    <div class="card-body">
+                        <i class="fas fa-language fa-3x mb-3"></i>
+                        <h5 class="card-title">Translate Files</h5>
+                        <p class="card-text">Translate documents into multiple languages instantly. Our service supports a wide range of languages to meet your needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="contact" class="container-fluid py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="mb-4">Contact Us</h2>
+                <ul class="list-unstyled mb-4">
+                    <li><i class="fas fa-envelope me-2"></i> support&#64;filesharingapp.com</li>
+                    <li><i class="fas fa-phone me-2"></i> +1 234 567 890</li>
+                    <li><i class="fas fa-map-marker-alt me-2"></i> 123 File Sharing St., Suite 100, Tech City, TX 12345</li>
+                </ul>
+                <p class="mb-4">Have a question or inquiry? Feel free to reach out to us using the contact details provided above. We're here to help!</p>
+            </div>
+            <div class="col-lg-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="5" placeholder="Write your message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" (click)="send()">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="bg-dark text-white text-center py-3">
+    &copy; 2024 File Sharing App. All rights reserved.
+</footer>

@@ -1,0 +1,62 @@
+<div class="container mt-4">
+  <div *ngIf="recycleBinFiles.length > 0; else noFiles">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div *ngFor="let file of recycleBinFiles" class="col">
+        <div class="card h-100 shadow">
+          <div class="card-body">
+            <h5 class="card-title">{{ file.file.filename }}</h5>
+            <p class="card-text">Uploaded At: {{ file.file.uploadedAt | date:'medium' }}</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <button class="btn btn-primary" (click)="showRestoreOptions(file)">
+                <i class="bi bi-arrow-counterclockwise"></i> Restore
+              </button>
+              <button class="btn btn-danger" (click)="deletePermanently(file)">
+                <i class="bi bi-trash"></i> Delete Permanently
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noFiles>
+    <h6 class="alert alert-info mt-3">No files in the recycle bin.</h6>
+  </ng-template>
+</div>
+<div *ngIf="showRestoreOptionsDialog" class="modal fade show d-block" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Restore Options for {{ selectedFile?.file.filename }}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="cancelRestoreOptions()"></button>
+      </div>
+      <div class="modal-body">
+        <button class="btn btn-primary me-2" (click)="restoreFilePermanently(selectedFile)">
+          <i class="bi bi-arrow-counterclockwise"></i> Restore Permanently
+        </button>
+        <button class="btn btn-warning me-2" (click)="showRetentionDateDialog(selectedFile)">
+          <i class="bi bi-calendar-plus"></i> Restore with Retention
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showRetentionDialog" class="modal fade show d-block" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Select Retention Date for {{ selectedFile?.file.filename }}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="cancelRetentionDateDialog()"></button>
+      </div>
+      <div class="modal-body">
+        <input type="date" class="form-control mb-3" (change)="setRetentionDate($event)" [min]="minRetentionDate">
+        <div>
+          <button class="btn btn-warning me-2" (click)="restoreFileWithRetention()">
+            <i class="bi bi-calendar-plus"></i> Restore with Retention
+          </button>
+          <button class="btn btn-secondary" (click)="cancelRetentionDateDialog()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
